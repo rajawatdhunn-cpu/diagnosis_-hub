@@ -1,0 +1,143 @@
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Disease Symptom Checker</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#eef5ff;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.container{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.2);
+width:350px;
+text-align:center;
+}
+
+h1{
+color:#1976d2;
+}
+
+select{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:8px;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#1976d2;
+color:white;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0d47a1;
+}
+
+#result{
+margin-top:20px;
+font-size:18px;
+font-weight:bold;
+color:#333;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>🩺 AI Disease Checker</h1>
+
+<select id="s1">
+<option>Fever</option>
+<option>Cough</option>
+<option>Headache</option>
+<option>Vomiting</option>
+<option>Body Pain</option>
+</select>
+
+<select id="s2">
+<option>Cough</option>
+<option>Fever</option>
+<option>Headache</option>
+<option>Vomiting</option>
+<option>Body Pain</option>
+</select>
+
+<select id="s3">
+<option>Headache</option>
+<option>Fever</option>
+<option>Cough</option>
+<option>Vomiting</option>
+<option>Body Pain</option>
+</select>
+
+<button onclick="predict()">Check Disease</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function predict(){
+
+let symptoms=[
+document.getElementById("s1").value,
+document.getElementById("s2").value,
+document.getElementById("s3").value
+];
+
+let disease="No match found";
+
+if(symptoms.includes("Fever") &&
+symptoms.includes("Cough") &&
+symptoms.includes("Body Pain")){
+
+disease="🤒 Possible Influenza";
+
+}
+
+else if(symptoms.includes("Fever") &&
+symptoms.includes("Headache") &&
+symptoms.includes("Vomiting")){
+
+disease="🦟 Possible Dengue";
+
+}
+
+else if(symptoms.includes("Cough") &&
+symptoms.includes("Headache")){
+
+disease="🤧 Possible Viral Infection";
+
+}
+
+document.getElementById("result").innerHTML=disease;
+
+}
+
+</script>
+
+</body>
+</html>
+
